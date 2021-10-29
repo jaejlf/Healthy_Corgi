@@ -1,10 +1,9 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import Navigator from './Navigator';
+import { Text, SafeAreaView, StyleSheet } from 'react-native';
 
 export default function App() {
     return (<SafeAreaView style={styles.safeAreaView}>
-        <Navigator />
+        <Text>This is Todo Page</Text>
     </SafeAreaView>);
 }
 const styles = StyleSheet.create({
