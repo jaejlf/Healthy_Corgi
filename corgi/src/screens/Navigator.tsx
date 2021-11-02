@@ -11,7 +11,7 @@ export default function Navigator() {
         { key: 'scene1', title: 'Diary', icon: 'book-open', color: '#F88929' },
         { key: 'scene2', title: 'Todo', icon: 'check-box-outline', color: '#F88929' },
         { key: 'scene3', title: 'Info', icon: 'information-variant', color: '#F88929' },
-        { key: 'scene4', title: 'MyCorgi', icon: 'dog', color: '#F88929' }
+        { key: 'scene4', title: 'MyCorgi', icon: 'settings-outline', color: '#F88929' }
     ]);
 
     const renderScene = BottomNavigation.SceneMap({

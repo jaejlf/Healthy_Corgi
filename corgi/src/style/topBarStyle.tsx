@@ -4,6 +4,7 @@ export const topBarStyle = StyleSheet.create({
     topBar: {
         width: '100%',
         height: 50,
+        backgroundColor: '#FFFFFF',
         justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 1,
