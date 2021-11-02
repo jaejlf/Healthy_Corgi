@@ -1,15 +1,32 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import Navigator from './Navigator';
+import React, { useState, useCallback } from 'react';
+import 'react-native-gesture-handler';
+import { enableScreens } from 'react-native-screens';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
+import MainNavigator from './src/screens/MainNavigator';
+import { ToggleThemeProvider } from './src/contexts/ToggleThemeProvider';
 
-const styles = StyleSheet.create({
-    safeAreaView: { flex: 1 },
-})
+enableScreens();
 
 export default function App() {
+    const scheme = useColorScheme();
+    const [theme, setTheme] = useState(
+        scheme === 'dark' ? DarkTheme : DefaultTheme
+    )
+    const toggleTheme = useCallback(
+        () => setTheme(({ dark }) => (dark ? DefaultTheme : DarkTheme)), []
+    )
+
     return (
-        <SafeAreaView style={styles.safeAreaView}>
-            <Navigator />
-        </SafeAreaView>
+        <AppearanceProvider>
+            <ToggleThemeProvider toggleTheme={toggleTheme}>
+                <SafeAreaProvider>
+                    <NavigationContainer theme={theme}>
+                        <MainNavigator />
+                    </NavigationContainer>
+                </SafeAreaProvider>
+            </ToggleThemeProvider>
+        </AppearanceProvider>
     );
 }
