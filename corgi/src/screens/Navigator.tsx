@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { BottomNavigation } from "react-native-paper";
-import Diary from "./src/Diary";
-import Todo from "./src/Todo";
-import Info from "./src/Info";
-import MyCorgi from "./src/MyCorgi";
+import Diary from "./pages/Diary";
+import Todo from "./pages/Todo";
+import Info from "./pages/Info";
+import MyCorgi from "./pages/MyCorgi";
 
 export default function Navigator() {
     const [index, setIndex] = useState<number>(0);
