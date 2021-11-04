@@ -1,11 +1,9 @@
-import { ThemeProvider } from '@react-navigation/native';
 import React from 'react';
 import { Text, SafeAreaView, View, Image, StyleSheet, Switch } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { useToggleTheme } from '../../contexts/ToggleThemeProvider';
 import { fontStyle } from '../../style/fontStyle';
 import { topBarStyle } from '../../style/topBarStyle';
-import { blue100 } from 'react-native-paper/lib/typescript/styles/colors';
 
 export default function App() {
     const theme = useTheme();

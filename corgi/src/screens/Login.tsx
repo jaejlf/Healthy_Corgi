@@ -3,9 +3,13 @@ import { StyleSheet, View, Text, TextInput, Switch, Image, TouchableOpacity } fr
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { fontStyle } from '../style/fontStyle';
 import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { StackParamList } from './MainNavigator';
+
+type inAppProp = StackNavigationProp<StackParamList, 'inApp'>;
 
 export default function Login() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<inAppProp>();
     const goInapp = useCallback(() => navigation.navigate('inApp'), []);
 
     return (
