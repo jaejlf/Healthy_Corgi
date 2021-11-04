@@ -11,7 +11,7 @@ export default function TodoInsert() {
             <TextInput
                 style={[fontStyle.regular]}
                 placeholder="할 일을 추가하세요."
-                placeholderTextColor={myColor.gray}
+                placeholderTextColor={myColor.textGray}
                 autoCorrect={false} />
             <View>
                 <Button title={'  +  '} />
