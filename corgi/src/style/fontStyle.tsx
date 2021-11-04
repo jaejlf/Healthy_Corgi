@@ -2,12 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export const fontStyle = StyleSheet.create({
     regular: {
-        fontFamily: 'Gaegu-Regular'
+        fontFamily: 'Gaegu-Regular',
+        fontSize: 20
     },
     bold: {
-        fontFamily: 'Gaegu-Bold'
+        fontFamily: 'Gaegu-Bold',
+        fontSize: 20
     },
     light: {
-        fontFamily: 'Gaegu-Light'
+        fontFamily: 'Gaegu-Light',
+        fontSize: 20
     }
 })

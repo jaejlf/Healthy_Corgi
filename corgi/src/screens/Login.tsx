@@ -5,6 +5,8 @@ import { fontStyle } from '../style/fontStyle';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StackParamList } from './MainNavigator';
+import { myColor } from '../style/myColors';
+import { defaultStyle } from '../style/defaultStyle';
 
 type inAppProp = StackNavigationProp<StackParamList, 'inApp'>;
 
@@ -13,7 +15,7 @@ export default function Login() {
     const goInapp = useCallback(() => navigation.navigate('inApp'), []);
 
     return (
-        <SafeAreaView style={[styles.flex]}>
+        <SafeAreaView style={[defaultStyle.safeAreaView]}>
             <View style={[styles.view]}>
                 <View style={[styles.contextView]}>
                     <Image style={[styles.mainImage]} source={require('../../assets/img/logo_corgi.png')} />
@@ -44,7 +46,6 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-    flex: { flex: 1 },
     view: {
         flex: 1,
         alignItems: 'center'
@@ -83,16 +84,16 @@ const styles = StyleSheet.create({
     textInputView: {
         marginBottom: 25,
         borderWidth: 1,
-        borderColor: '#CDCDCD',
+        borderColor: myColor.gray,
         borderRadius: 50,
         height: 50
     },
     loginBtn: {
         width: '100%',
-        backgroundColor: '#F88929',
+        backgroundColor: myColor.orange,
         height: 50,
         borderWidth: 1,
-        borderColor: '#CDCDCD',
+        borderColor: myColor.gray,
         borderRadius: 50
     }
 })

@@ -1,6 +1,14 @@
 import { StyleSheet } from 'react-native';
 
-export const subTitleStyle = StyleSheet.create({
+export const defaultStyle = StyleSheet.create({
+    safeAreaView: {
+        flex: 1
+    },
+    lineup: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
     subtitle: {
         margin: 20,
         marginBottom: 0,

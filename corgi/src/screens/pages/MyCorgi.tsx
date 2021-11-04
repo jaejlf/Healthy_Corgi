@@ -3,8 +3,9 @@ import { Text, SafeAreaView, View, Image, StyleSheet, Switch } from 'react-nativ
 import { useTheme } from '@react-navigation/native';
 import { useToggleTheme } from '../../contexts/ToggleThemeProvider';
 import { fontStyle } from '../../style/fontStyle';
-import { topBarStyle } from '../../style/topBarStyle';
-import { subTitleStyle } from '../../style/subTitle';
+import TopBar from '../../style/TopBar';
+import { defaultStyle } from '../../style/defaultStyle';
+import { myColor } from '../../style/myColors';
 
 export default function MyCorgi() {
     const theme = useTheme();
@@ -12,34 +13,32 @@ export default function MyCorgi() {
     const toggleTheme = useToggleTheme();
 
     return (
-        <SafeAreaView style={[styles.safeAreaView, { backgroundColor: colors.background }]}>
-            <View style={topBarStyle.topBar}>
-                <Image style={[topBarStyle.img]} source={require('../../../assets/img/logo_corgi.png')} />
-            </View>
-            <View style={subTitleStyle.subtitle}>
+        <SafeAreaView style={[defaultStyle.safeAreaView, { backgroundColor: colors.background }]}>
+            <TopBar />
+            <View style={defaultStyle.subtitle}>
                 <Text></Text><Text></Text><Text></Text>
-                <Image style={[subTitleStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
-                <Text style={[styles.text, fontStyle.bold, { color: '#E76C07' }]}>정보</Text>
-                <Image style={[subTitleStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
+                <Image style={[defaultStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
+                <Text style={[fontStyle.bold, { fontSize: 25 }, { color: myColor.textOrange }]}>정보</Text>
+                <Image style={[defaultStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
                 <Text></Text><Text></Text><Text></Text>
             </View>
-            <View style={styles.context}>
+            <View style={styles.container}>
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>이름</Text>
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>코기</Text>
             </View>
-            <View style={styles.context}>
+            <View style={styles.container}>
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>나이</Text>
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>5살</Text>
             </View>
             <View style={styles.blank} />
-            <View style={subTitleStyle.subtitle}>
+            <View style={defaultStyle.subtitle}>
                 <Text></Text><Text></Text><Text></Text>
-                <Image style={[subTitleStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
-                <Text style={[styles.text, fontStyle.bold, { color: '#E76C07' }]}>설정</Text>
-                <Image style={[subTitleStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
+                <Image style={[defaultStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
+                <Text style={[fontStyle.bold, { fontSize: 25 }, { color: myColor.textOrange }]}>설정</Text>
+                <Image style={[defaultStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
                 <Text></Text><Text></Text><Text></Text>
             </View>
-            <View style={styles.context}>
+            <View style={styles.container}>
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>Dark Mode</Text>
                 <Switch value={theme.dark} onValueChange={toggleTheme} />
             </View>
@@ -47,23 +46,20 @@ export default function MyCorgi() {
     );
 }
 const styles = StyleSheet.create({
-    safeAreaView: {
-        flex: 1
-    },
     text: {
-        fontSize: 25,
+        marginLeft: 10,
+        marginRight: 10
     },
-    context: {
-        margin: 20,
-        marginBottom: 0,
+    blank: {
+        marginTop: 30
+    },
+    container: {
         height: 50,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        margin: 20,
         borderBottomWidth: 1,
-        borderBottomColor: '#CDCDCD'
-    },
-    blank: {
-        marginTop: 30
+        borderBottomColor: myColor.gray
     }
 })
