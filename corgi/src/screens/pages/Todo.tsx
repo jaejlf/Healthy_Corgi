@@ -4,7 +4,7 @@ import { useTheme } from '@react-navigation/native';
 import { fontStyle } from '../../style/fontStyle';
 import { topBarStyle } from '../../style/topBarStyle';
 
-export default function App() {
+export default function Todo() {
     const theme = useTheme();
     const { colors } = theme;
 

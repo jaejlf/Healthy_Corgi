@@ -4,8 +4,9 @@ import { useTheme } from '@react-navigation/native';
 import { useToggleTheme } from '../../contexts/ToggleThemeProvider';
 import { fontStyle } from '../../style/fontStyle';
 import { topBarStyle } from '../../style/topBarStyle';
+import { subTitleStyle } from '../../style/subTitle';
 
-export default function App() {
+export default function MyCorgi() {
     const theme = useTheme();
     const { colors } = theme;
     const toggleTheme = useToggleTheme();
@@ -15,8 +16,12 @@ export default function App() {
             <View style={topBarStyle.topBar}>
                 <Image style={[topBarStyle.img]} source={require('../../../assets/img/logo_corgi.png')} />
             </View>
-            <View style={styles.subtitle}>
+            <View style={subTitleStyle.subtitle}>
+                <Text></Text><Text></Text><Text></Text>
+                <Image style={[subTitleStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
                 <Text style={[styles.text, fontStyle.bold, { color: '#E76C07' }]}>정보</Text>
+                <Image style={[subTitleStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
+                <Text></Text><Text></Text><Text></Text>
             </View>
             <View style={styles.context}>
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>이름</Text>
@@ -27,8 +32,12 @@ export default function App() {
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>5살</Text>
             </View>
             <View style={styles.blank} />
-            <View style={styles.subtitle}>
-                <Text style={[styles.text, fontStyle.bold, , { color: '#E76C07' }]}>Setting</Text>
+            <View style={subTitleStyle.subtitle}>
+                <Text></Text><Text></Text><Text></Text>
+                <Image style={[subTitleStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
+                <Text style={[styles.text, fontStyle.bold, { color: '#E76C07' }]}>설정</Text>
+                <Image style={[subTitleStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
+                <Text></Text><Text></Text><Text></Text>
             </View>
             <View style={styles.context}>
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>Dark Mode</Text>
@@ -53,15 +62,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         borderBottomWidth: 1,
         borderBottomColor: '#CDCDCD'
-    },
-    subtitle: {
-        margin: 20,
-        marginBottom: 0,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 100,
-        backgroundColor: '#FDE4CF'
     },
     blank: {
         marginTop: 30
