@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 export default function TodoItem() {
     const theme = useTheme();
     const { colors } = theme;
-
+    
     return (
         <View style={[defaultStyle.lineup]}>
             <View style={styles.container}>
