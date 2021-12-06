@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, TextInput, View, TouchableOpacity, Text } from 'react-native';
 import { fontStyle } from '../../../style/fontStyle';
 import { defaultStyle } from '../../../style/defaultStyle';

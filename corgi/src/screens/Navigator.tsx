@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BottomNavigation } from "react-native-paper";
 import Diary from "./pages/Diary";
 import Todo from "./pages/Todo/index";
-import Info from "./pages/Info";
+import Info from "./pages/Info/index";
 import MyCorgi from "./pages/MyCorgi";
 import { myColor } from "../style/myColors";
 
