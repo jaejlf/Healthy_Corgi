@@ -6,5 +6,5 @@ export const myColor = {
     lightOrange: '#FAB47A',
     gray: '#CDCDCD',
     textGray: '#9B9B9B',
-    black: 'fff'
+    black: '#000000'
 }
