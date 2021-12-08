@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { iPerson } from './person';
 import { useTheme } from '@react-navigation/native';
 import { fontStyle } from '../../../style/fontStyle';
@@ -13,9 +13,7 @@ export default function showPerson(person: iPerson) {
     return (
         <View style={[styles.view, { backgroundColor: colors.background }]}>
             <View style={styles.leftView}>
-                <TouchableOpacity>
-                    <Image style={styles.avatar} source={{ uri: person.avatar }} />
-                </TouchableOpacity>
+                <Image style={styles.avatar} source={{ uri: person.avatar }} />
             </View>
             <View style={styles.rightView}>
                 <Text style={[styles.name, fontStyle.bold, { fontSize: 25 }, { color: colors.text }]}>{person.name}</Text>
