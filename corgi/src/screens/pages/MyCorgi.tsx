@@ -10,15 +10,10 @@ import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StackParamList } from '../MainNavigator';
 
-type loginProp = StackNavigationProp<StackParamList, 'Login'>;
-
 export default function MyCorgi() {
     const theme = useTheme();
     const { colors } = theme;
     const toggleTheme = useToggleTheme();
-
-    const navigation = useNavigation<loginProp>();
-    const logout = useCallback(() => navigation.navigate('Login'), []);
     
     return (
         <SafeAreaView style={[defaultStyle.safeAreaView, { backgroundColor: colors.background }]}>
@@ -49,17 +44,6 @@ export default function MyCorgi() {
             <View style={styles.container}>
                 <Text style={[styles.text, fontStyle.regular, { color: colors.text }]}>Dark Mode</Text>
                 <Switch value={theme.dark} onValueChange={toggleTheme} />
-            </View>
-            <View style={styles.blank} />
-            <View style={defaultStyle.subtitle}>
-                <Text></Text><Text></Text><Text></Text>
-                <Image style={[defaultStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
-                <Text style={[fontStyle.bold, { fontSize: 25 }, { color: myColor.textOrange }]}>계정관리</Text>
-                <Image style={[defaultStyle.subImg]} source={require('../../../assets/img/paw_orange.png')} />
-                <Text></Text><Text></Text><Text></Text>
-            </View>
-            <View>
-                <TouchableOpacity onPress={logout} style={styles.btn}><Text style={[fontStyle.regular]}>로그아웃</Text></TouchableOpacity>
             </View>
         </SafeAreaView>
     );
