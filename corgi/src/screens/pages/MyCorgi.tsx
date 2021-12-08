@@ -6,9 +6,6 @@ import { fontStyle } from '../../style/fontStyle';
 import TopBar from '../../style/TopBar';
 import { defaultStyle } from '../../style/defaultStyle';
 import { myColor } from '../../style/myColors';
-import { useNavigation } from '@react-navigation/core';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../MainNavigator';
 
 export default function MyCorgi() {
     const theme = useTheme();

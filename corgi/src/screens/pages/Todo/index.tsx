@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { SafeAreaView, View, StyleSheet, Text } from 'react-native';
-import { Colors } from 'react-native-paper';
 import Input from './Input';
 import TopBar from '../../../style/TopBar';
 import { defaultStyle } from '../../../style/defaultStyle';

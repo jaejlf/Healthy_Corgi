@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Text, SafeAreaView, View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 import { myColor } from './myColors';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';

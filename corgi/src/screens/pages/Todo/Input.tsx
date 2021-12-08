@@ -1,6 +1,5 @@
 import React, { Dispatch, FC, SetStateAction, useCallback, useState } from 'react';
 import { View, TextInput, TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { Colors } from 'react-native-paper';
 import { fontStyle } from '../../../style/fontStyle';
 import { useTheme } from '@react-navigation/native';
 import { myColor } from '../../../style/myColors';
