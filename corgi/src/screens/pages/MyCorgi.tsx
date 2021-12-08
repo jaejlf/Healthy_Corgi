@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Text, SafeAreaView, View, Image, StyleSheet, Switch, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { useToggleTheme } from '../../contexts/ToggleThemeProvider';
@@ -6,12 +6,20 @@ import { fontStyle } from '../../style/fontStyle';
 import TopBar from '../../style/TopBar';
 import { defaultStyle } from '../../style/defaultStyle';
 import { myColor } from '../../style/myColors';
+import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { StackParamList } from '../MainNavigator';
+
+type loginProp = StackNavigationProp<StackParamList, 'Login'>;
 
 export default function MyCorgi() {
     const theme = useTheme();
     const { colors } = theme;
     const toggleTheme = useToggleTheme();
 
+    const navigation = useNavigation<loginProp>();
+    const logout = useCallback(() => navigation.navigate('Login'), []);
+    
     return (
         <SafeAreaView style={[defaultStyle.safeAreaView, { backgroundColor: colors.background }]}>
             <TopBar />
@@ -51,7 +59,7 @@ export default function MyCorgi() {
                 <Text></Text><Text></Text><Text></Text>
             </View>
             <View>
-                <TouchableOpacity style={styles.btn}><Text style={[fontStyle.regular]}>로그인아웃관리</Text></TouchableOpacity>
+                <TouchableOpacity onPress={logout} style={styles.btn}><Text style={[fontStyle.regular]}>로그아웃</Text></TouchableOpacity>
             </View>
         </SafeAreaView>
     );
@@ -82,6 +90,6 @@ const styles = StyleSheet.create({
         backgroundColor: myColor.lightOrange,
         paddingTop: 15,
         borderRadius: 3,
-        border : 1
+        border: 1
     }
 })
