@@ -12,7 +12,7 @@ export default function Info() {
     return (
         <SafeAreaView style={[defaultStyle.safeAreaView, { backgroundColor: colors.background }]}>
             <TopBar />
-            {Item()} 
+            {Item()}
         </SafeAreaView>
     );
 }
