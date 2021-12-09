@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     },
     todoText: {
         flex: 1,
-        fontSize: 20,
         marginLeft: 20
     }
 });

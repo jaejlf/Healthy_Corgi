@@ -51,8 +51,7 @@ const styles = StyleSheet.create({
         borderRadius: avatarSize / 2
     },
     name: {
-        marginRight: 5,
-        fontSize: 22
+        marginRight: 5
     },
     email: {
         color: myColor.orange

@@ -29,7 +29,7 @@ const Input: FC<logType> = ({ updateLog }) => {
                 value={logTest}
                 onChangeText={(text) => { updateLogText(text); }} />
             <TouchableOpacity style={styles.button} onPress={pressInput}>
-                <Text style={[styles.buttonText, fontStyle.regular]}>{"+"}</Text>
+                <Text style={fontStyle.regular}>{"+"}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -42,17 +42,13 @@ const styles = StyleSheet.create({
         borderColor: myColor.lightOrange
     },
     input: {
-        flex: 4,
-        fontSize: 20
+        flex: 4
     },
     button: {
         flex: 1,
         backgroundColor: myColor.lightOrange,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    buttonText: {
-        fontSize: 20
     }
 })
 export default Input;
