@@ -18,7 +18,7 @@ const Todo = () => {
                 <View style={styles.todoView} key={index}>
                     <Icon name="checkcircleo" size={25} color={myColor.orange} />
                     <Text style={[styles.todoText, fontStyle.regular, { color: colors.text }]}>{todoItem}</Text>
-                    <Icon name="delete" size={25} color="#e33057"/>
+                    <Icon name="delete" size={25} color="#e33057" />
                 </View>
             );
         })
@@ -27,7 +27,7 @@ const Todo = () => {
         <SafeAreaView style={[defaultStyle.safeAreaView, { backgroundColor: colors.background }]}>
             <TopBar />
             <View style={styles.view}>{todoViews}</View>
-            <Input updateTodo={updateTodo}/>
+            <Input updateTodo={updateTodo} />
         </SafeAreaView>
     )
 }

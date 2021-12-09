@@ -2,12 +2,11 @@ import React, { useState, useMemo, useRef, useCallback } from 'react';
 import { SafeAreaView, View, StyleSheet, Text, Image, NativeSyntheticEvent, NativeScrollEvent, Animated, TouchableOpacity } from 'react-native';
 import Input from './Input';
 import TopBar from '../../../style/TopBar';
-import { defaultStyle } from '../../../style/defaultStyle';
 import { useTheme } from '@react-navigation/native';
 import { myColor } from '../../../style/myColors';
 import { fontStyle } from '../../../style/fontStyle';
 import { FlatList } from "react-native";
-import { Colors } from "react-native-paper";
+import faker from 'faker';
 
 const imageWidth = 330;
 const imageHeight = 200;
@@ -22,6 +21,7 @@ const Diary = () => {
             return (
                 <View style={styles.logView} key={index}>
                     <Text style={[styles.logText, fontStyle.regular, { color: colors.text }]}>{logItem}</Text>
+                    <Text style={[fontStyle.regular, styles.dateText, { color: myColor.textGray }]}>{faker.date.recent().toDateString()}</Text>
                 </View>
 
             );
@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
         height: imageHeight,
         marginTop: 30
     },
-    logItemView:{
-        flex:1
+    logItemView: {
+        flex: 1
     },
     image: {
         width: imageWidth,
@@ -123,20 +123,26 @@ const styles = StyleSheet.create({
         padding: 10
     },
     logView: {
-        width: '100%',
-        height: 55,
+        width: 330,
+        height: 100,
         marginTop: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
         justifyContent: 'flex-start',
         padding: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: myColor.gray
+        borderWidth: 1,
+        borderColor: myColor.gray,
+        borderRadius: 10
     },
     logText: {
         flex: 1,
         fontSize: 20,
         marginLeft: 20
     },
+    dateText: {
+        fontSize: 15,
+        marginLeft: 20,
+        marginTop: 10
+    }
 })
 export default Diary;
