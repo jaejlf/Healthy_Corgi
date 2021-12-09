@@ -7,10 +7,6 @@ type iPerson = {
     avatar: string,
     image: string,
     comments: string,
-    counts: {
-        comment: number,
-        retweet: number,
-        heart: number
-    }
+    category: string
 }
 export type { iPerson };

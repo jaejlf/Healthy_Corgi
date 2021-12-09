@@ -21,6 +21,7 @@ export default function showPerson(person: iPerson) {
                 <View style={styles.dateView}>
                     <Text style={[fontStyle.regular, { color: colors.text }]}>{person.createdDate.toDateString()}</Text>
                 </View>
+                <Text style={[fontStyle.regular, styles.category, { color: myColor.black, fontSize:15 }]}>{person.category}</Text>
                 <Text style={[fontStyle.regular, styles.comments, { color: colors.text }]} numberOfLines={3}>{person.comments}</Text>
                 <Image style={styles.image} source={{ uri: person.image }} />
             </View>
@@ -68,5 +69,15 @@ const styles = StyleSheet.create({
     image: {
         height: 150,
         marginTop: 15
+    },
+    category:{
+        borderWidth: 1,
+        borderRadius: 10,
+        width: 70,
+        height: 30,
+        textAlign: 'center',
+        backgroundColor: myColor.lightOrange,
+        marginTop: 20,
+        paddingTop: 7
     }
 });
