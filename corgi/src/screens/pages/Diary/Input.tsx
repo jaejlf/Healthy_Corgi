@@ -36,7 +36,7 @@ const Input: FC<logType> = ({ updateLog }) => {
 }
 const styles = StyleSheet.create({
     view: {
-        flex: 1,
+        height: 70,
         flexDirection: 'row',
         borderWidth: 1.5,
         borderColor: myColor.lightOrange

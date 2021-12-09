@@ -35,7 +35,7 @@ const Input: FC<todoType> = ({ updateTodo }) => {
 }
 const styles = StyleSheet.create({
     view: {
-        flex: 1,
+        height: 70,
         flexDirection: 'row',
         borderWidth: 1.5,
         borderColor: myColor.lightOrange

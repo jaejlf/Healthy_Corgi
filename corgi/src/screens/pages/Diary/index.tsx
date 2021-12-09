@@ -9,6 +9,10 @@ import { fontStyle } from '../../../style/fontStyle';
 import { FlatList } from "react-native";
 import { Colors } from "react-native-paper";
 
+const imageWidth = 330;
+const imageHeight = 200;
+const circleWidth = 10;
+const circleMargin = circleWidth / 2;
 const Diary = () => {
     const theme = useTheme();
     const { colors } = theme;
@@ -23,19 +27,12 @@ const Diary = () => {
             );
         })
     }, [log.length]);
-    const imageList = [1, 2, 3, 4, 5].map((val) => {
-        return "https://source.unsplash.com/random/1000x800";
-    });
-    const circles = useMemo(() => [1, 2, 3, 4, 5].map((val) => {
-        return <View key={val} style={styles.circle} />
-    }), []);
     const animValue = useRef(new Animated.Value(0)).current;
     const animStyle = {
         transform: [{
-            translateX: Animated.add(Animated.multiply(animValue,
-                Animated.add(new Animated.Value(circleWidth),
-                    new Animated.Value(circleMargin))),
-                new Animated.Value(5))
+            translateX: Animated.add(Animated.multiply(animValue, Animated.add(new
+                Animated.Value(circleWidth), new Animated.Value(circleMargin))), new
+                Animated.Value(5))
         }]
     };
     const onScroll = useCallback((event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -45,23 +42,28 @@ const Diary = () => {
             useNativeDriver: true, toValue: index,
             duration: 100
         }).start();
-    }, []);
-    const thumbnails = useMemo(() => imageList.map((val, index) => {
-        return <TouchableOpacity key={index} onPress={()=>{selectImage(index);}}>
-            <Image source={{ uri: val }} style={styles.thumb} />
-        </TouchableOpacity>
-    }), []);
+    }, [])
     const flatListRef = useRef<FlatList | null>(null);
     const selectImage = useCallback((index: number) => {
         flatListRef.current?.scrollToIndex({ index });
     }, []);
+    const imageList = useMemo(() => [1, 2, 3, 4, 5].map((val) => {
+        return "https://source.unsplash.com/random/1000x800";
+    }), []);
+    const circles = useMemo(() => [1, 2, 3, 4, 5].map((val) => {
+        return <View key={val} style={styles.circle} />
+    }), []);
+    const thumbnails = useMemo(() => imageList.map((val, index) => {
+        return <TouchableOpacity onPress={() => { selectImage(index); }} key={index}><Image
+            source={{ uri: val }} style={styles.thumb} /></TouchableOpacity>
+    }), []);
 
     return (
         <SafeAreaView style={styles.safe}>
             <TopBar />
             <View style={styles.flatview}>
                 <FlatList ref={flatListRef} horizontal data={imageList} onScroll={onScroll} renderItem={({ item }) => {
-                    return <Image source={{ uri: 'item' }} style={styles.image} />
+                    return <Image source={{ uri: item }} style={styles.image} />
                 }} />
             </View>
             <View style={styles.iconBar}>
@@ -71,28 +73,54 @@ const Diary = () => {
             <View style={styles.thumbBar}>
                 {thumbnails}
             </View>
-            <View style={styles.view}>{logViews}</View>
+            <View style={styles.logItemView}>{logViews}</View>
             <Input updateLog={updateLog} />
         </SafeAreaView>
-    )
-}
+    );
+};
 
-const imageWidth = 240;
-const imageHeight = imageWidth * 3 / 4;
-const circleWidth = 10;
-const circleMargin = circleWidth / 2;
 const styles = StyleSheet.create({
-    view: {
-        flex: 4
-    },
-    flatview: {
-        width: imageWidth,
-        height: imageHeight
-    },
     safe: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
+    },
+    flatview: {
+        width: imageWidth,
+        height: imageHeight,
+        marginTop: 30
+    },
+    logItemView:{
+        flex:1
+    },
+    image: {
+        width: imageWidth,
+        height: imageHeight
+    },
+    iconBar: {
+        flexDirection: "row",
+        padding: 5
+    },
+    circle: {
+        width: circleWidth,
+        height: circleWidth,
+        borderRadius: circleWidth / 2,
+        marginRight: circleMargin,
+        backgroundColor: myColor.lightOrange
+    },
+    selected: {
+        position: 'absolute',
+        backgroundColor: myColor.orange,
+        top: 5
+    },
+    thumb: {
+        width: imageWidth / 6,
+        height: imageHeight / 6,
+        marginRight: imageWidth / 30,
+    },
+    thumbBar: {
+        flexDirection: "row",
+        padding: 10
     },
     logView: {
         width: '100%',
@@ -110,34 +138,5 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginLeft: 20
     },
-    image: {
-        height: 150,
-        marginTop: 15
-    },
-    iconBar: {
-        flexDirection: "row",
-        padding: 5
-    },
-    circle: {
-        width: circleWidth,
-        height: circleWidth,
-        borderRadius: circleWidth / 2,
-        marginRight: circleMargin,
-        backgroundColor: Colors.cyan100
-    },
-    selected: {
-        position: 'absolute',
-        backgroundColor: Colors.cyan500,
-        top: 5
-    },
-    thumb: {
-        width: imageWidth / 6,
-        height: imageHeight / 6,
-        marginRight: imageWidth / 30
-    },
-    thumbBar: {
-        flexDirection: "row",
-        padding: 5
-    }
-});
+})
 export default Diary;
