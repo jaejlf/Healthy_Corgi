@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { fontStyle } from '../style/fontStyle';
@@ -7,12 +7,15 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { StackParamList } from './MainNavigator';
 import { myColor } from '../style/myColors';
 import { defaultStyle } from '../style/defaultStyle';
+import { createRandomPerson } from './pages/Info/createRandomPerson';
+import { iPerson } from './pages/Info/person';
 
 type inAppProp = StackNavigationProp<StackParamList, 'inApp'>;
-
 export default function Login() {
     const navigation = useNavigation<inAppProp>();
     const goInapp = useCallback(() => navigation.navigate('inApp'), []);
+    const [person, setPerson] = useState<iPerson>(createRandomPerson())
+    const [password, setPassword] = useState<string>('1234567890987654321');
 
     return (
         <SafeAreaView style={[defaultStyle.safeAreaView]}>
@@ -23,15 +26,24 @@ export default function Login() {
                     <View style={[styles.textview]}>
                         <Text style={[styles.text, fontStyle.bold]}>ID</Text>
                         <View style={[styles.textInputView]}>
-                            <TextInput style={[styles.textInput, fontStyle.regular]}
-                                placeholder="enter your email" />
+                            <TextInput
+                                style={[styles.textInput, fontStyle.regular]}
+                                value={person.email}
+                                onChangeText={email => setPerson(person => ({ ...person, email }))}
+                                placeholder="enter your email"
+                            />
                         </View>
                     </View>
                     <View style={[styles.textview]}>
                         <Text style={[styles.text, fontStyle.bold]}>password</Text>
                         <View style={[styles.textInputView]}>
-                            <TextInput secureTextEntry style={[styles.textInput, fontStyle.regular]}
-                                placeholder="enter your password" />
+                            <TextInput
+                                secureTextEntry
+                                style={[styles.textInput, fontStyle.regular]}
+                                value={password}
+                                onChangeText={setPassword}
+                                placeholder="enter your password"
+                            />
                         </View>
                     </View>
                     <View style={[styles.loginBtn]}>
