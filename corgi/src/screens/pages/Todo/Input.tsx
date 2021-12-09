@@ -1,14 +1,16 @@
 import React, { Dispatch, FC, SetStateAction, useCallback, useState } from 'react';
 import { View, TextInput, TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { fontStyle } from '../../../style/fontStyle';
 import { useTheme } from '@react-navigation/native';
+import { fontStyle } from '../../../style/fontStyle';
 import { myColor } from '../../../style/myColors';
+
 export type todoType = {
     updateTodo: Dispatch<SetStateAction<string[]>>
 }
 const Input: FC<todoType> = ({ updateTodo }) => {
     const theme = useTheme();
     const { colors } = theme;
+
     const [todoText, updateTodoText] = useState<string>('');
     const pressInput = useCallback(() => {
         if (todoText != "") {
@@ -50,4 +52,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 })
+
 export default Input;

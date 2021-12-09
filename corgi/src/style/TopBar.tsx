@@ -1,13 +1,12 @@
 import React, { useCallback } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import { myColor } from './myColors';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StackParamList } from '../screens/MainNavigator';
-import Icon from 'react-native-vector-icons/AntDesign';
 
 export default function TopBar() {
-
     type loginProp = StackNavigationProp<StackParamList, 'Login'>;
     const navigation = useNavigation<loginProp>();
     const goLogin = useCallback(() => navigation.navigate('Login'), []); //로그아웃 (다시 로그인 페이지로)
@@ -34,9 +33,9 @@ const styles = StyleSheet.create({
         width: 43,
         height: 43,
         marginTop: 3,
-        position:'absolute' //위치 고정
+        position: 'absolute' //위치 고정
     },
-    topContainer:{
+    topContainer: {
         flexDirection: 'row',
     },
     icon_view: {

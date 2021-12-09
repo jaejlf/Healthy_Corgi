@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { createRandomPerson } from './createRandomPerson';
 import showPerson from './showPerson';
 import { defaultStyle } from '../../../style/defaultStyle';

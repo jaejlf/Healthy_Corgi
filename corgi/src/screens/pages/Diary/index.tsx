@@ -1,13 +1,12 @@
 import React, { useState, useMemo, useRef, useCallback } from 'react';
-import { SafeAreaView, View, StyleSheet, Text, Image, NativeSyntheticEvent, NativeScrollEvent, Animated, TouchableOpacity, ScrollView } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text, Image, NativeSyntheticEvent, NativeScrollEvent, Animated, TouchableOpacity, ScrollView, FlatList } from 'react-native';
+import faker from 'faker';
 import Input from './Input';
 import TopBar from '../../../style/TopBar';
 import { useTheme } from '@react-navigation/native';
 import { myColor } from '../../../style/myColors';
 import { fontStyle } from '../../../style/fontStyle';
-import { FlatList } from "react-native";
 import { defaultStyle } from '../../../style/defaultStyle';
-import faker from 'faker';
 
 const imageWidth = 330;
 const imageHeight = 200;
@@ -16,6 +15,7 @@ const circleMargin = circleWidth / 2;
 const Diary = () => {
     const theme = useTheme();
     const { colors } = theme;
+
     const [log, updateLog] = useState<string[]>(new Array<string>());
     const logViews = useMemo(() => {
         return log.map((logItem, index) => {
@@ -33,6 +33,7 @@ const Diary = () => {
             );
         })
     }, [log.length]);
+
     const animValue = useRef(new Animated.Value(0)).current;
     const animStyle = {
         transform: [{
@@ -54,7 +55,7 @@ const Diary = () => {
         flatListRef.current?.scrollToIndex({ index });
     }, []);
 
-    //이미지 로컬 path URI
+    //로컬 path URI로 변환
     const pathArr = [
         Image.resolveAssetSource(require('../../../../assets/img/corgi1.jpg')).uri,
         Image.resolveAssetSource(require('../../../../assets/img/corgi2.jpg')).uri,
@@ -62,6 +63,7 @@ const Diary = () => {
         Image.resolveAssetSource(require('../../../../assets/img/corgi4.jpg')).uri,
         Image.resolveAssetSource(require('../../../../assets/img/corgi5.jpg')).uri
     ]
+
     let i = 0;
     const imageList = useMemo(() => [1, 2, 3, 4, 5].map((val) => {
         return pathArr[i++];
@@ -157,9 +159,10 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginTop: 3
     },
-    innerContainer:{
+    innerContainer: {
         marginLeft: 10,
         flexDirection: "row"
     }
 })
+
 export default Diary;

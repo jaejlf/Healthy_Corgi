@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { fontStyle } from '../style/fontStyle';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useTheme } from '@react-navigation/native';
 import { StackParamList } from './MainNavigator';
 import { myColor } from '../style/myColors';
 import { defaultStyle } from '../style/defaultStyle';
+import { fontStyle } from '../style/fontStyle';
 import { createRandomPerson } from './pages/Info/createRandomPerson';
 import { iPerson } from './pages/Info/person';
 
@@ -15,8 +15,10 @@ type inAppProp = StackNavigationProp<StackParamList, 'inApp'>;
 export default function Login() {
     const theme = useTheme();
     const { colors } = theme;
+
     const navigation = useNavigation<inAppProp>();
     const goInapp = useCallback(() => navigation.navigate('inApp'), []);
+
     const [person, setPerson] = useState<iPerson>(createRandomPerson())
     const [password, setPassword] = useState<string>('1234567890987654321');
 
@@ -30,7 +32,7 @@ export default function Login() {
                         <Text style={[styles.text, fontStyle.bold, { color: colors.text }]}>ID</Text>
                         <View style={[styles.textInputView]}>
                             <TextInput
-                                style={[styles.textInput, fontStyle.regular, { color: colors.text}]}
+                                style={[styles.textInput, fontStyle.regular, { color: colors.text }]}
                                 value={person.email}
                                 onChangeText={email => setPerson(person => ({ ...person, email }))}
                                 placeholder="enter your email"
@@ -43,7 +45,7 @@ export default function Login() {
                         <View style={[styles.textInputView]}>
                             <TextInput
                                 secureTextEntry
-                                style={[styles.textInput, fontStyle.regular, { color: colors.text}]}
+                                style={[styles.textInput, fontStyle.regular, { color: colors.text }]}
                                 value={password}
                                 onChangeText={setPassword}
                                 placeholder="enter your password"

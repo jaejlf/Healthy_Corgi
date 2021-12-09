@@ -1,7 +1,7 @@
 import React, { Dispatch, FC, SetStateAction, useCallback, useState } from 'react';
 import { View, TextInput, TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { fontStyle } from '../../../style/fontStyle';
 import { useTheme } from '@react-navigation/native';
+import { fontStyle } from '../../../style/fontStyle';
 import { myColor } from '../../../style/myColors';
 
 export type logType = {
@@ -10,6 +10,7 @@ export type logType = {
 const Input: FC<logType> = ({ updateLog }) => {
     const theme = useTheme();
     const { colors } = theme;
+
     const [logTest, updateLogText] = useState<string>('');
     const pressInput = useCallback(() => {
         if (logTest != "") {
@@ -51,4 +52,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 })
+
 export default Input;

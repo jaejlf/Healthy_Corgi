@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Text, SafeAreaView, View, Image, StyleSheet, Switch, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { useToggleTheme } from '../../contexts/ToggleThemeProvider';
@@ -11,7 +11,7 @@ export default function MyCorgi() {
     const theme = useTheme();
     const { colors } = theme;
     const toggleTheme = useToggleTheme();
-    
+
     return (
         <SafeAreaView style={[defaultStyle.safeAreaView, { backgroundColor: colors.background }]}>
             <TopBar />

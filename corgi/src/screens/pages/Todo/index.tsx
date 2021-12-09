@@ -1,34 +1,37 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { SafeAreaView, View, StyleSheet, Text, ScrollView, Alert } from 'react-native';
+import { useTheme } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import Input from './Input';
 import TopBar from '../../../style/TopBar';
 import { defaultStyle } from '../../../style/defaultStyle';
-import { useTheme } from '@react-navigation/native';
 import { myColor } from '../../../style/myColors';
 import { fontStyle } from '../../../style/fontStyle';
-import Icon from 'react-native-vector-icons/AntDesign';
 
 const Todo = () => {
     const theme = useTheme();
     const { colors } = theme;
+
     const [todo, updateTodo] = useState<string[]>(new Array<string>());
-    const onCheck = useCallback(()=>{
+    const onCheck = useCallback(() => {
         Alert.alert('Check pressed!');
     }, []);
-    const onRemove = useCallback(()=>{
+    const onRemove = useCallback(() => {
         Alert.alert('Delete pressed!');
     }, []);
+
     const todoViews = useMemo(() => {
         return todo.map((todoItem, index) => {
             return (
                 <View style={styles.todoView} key={index}>
                     <Icon name="checkcircleo" size={25} color={myColor.orange} onPress={onCheck} />
                     <Text style={[styles.todoText, fontStyle.regular, { color: colors.text }]}>{todoItem}</Text>
-                    <Icon name="delete" size={25} color="#e33057" onPress={onRemove}/>
+                    <Icon name="delete" size={25} color="#e33057" onPress={onRemove} />
                 </View>
             );
         })
     }, [todo.length]);
+
     return (
         <SafeAreaView style={[defaultStyle.safeAreaView, { backgroundColor: colors.background }]}>
             <TopBar />
@@ -58,4 +61,5 @@ const styles = StyleSheet.create({
         marginLeft: 20
     }
 });
+
 export default Todo;

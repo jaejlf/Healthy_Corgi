@@ -9,4 +9,5 @@ type iPerson = {
     comments: string,
     category: string
 }
+
 export type { iPerson };
