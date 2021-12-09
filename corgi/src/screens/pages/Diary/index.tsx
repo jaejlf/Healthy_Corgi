@@ -24,7 +24,7 @@ const Diary = () => {
                     <ScrollView>
                         <View style={styles.innerContainer}>
                             <Image style={[defaultStyle.subImg]} source={require('../../../../assets/img/paw_orange.png')} />
-                            <Text style={[fontStyle.regular, styles.dateText, { color: myColor.lightOrange }]}>{faker.date.recent().toDateString()}</Text>
+                            <Text style={[fontStyle.regular, styles.dateText, { color: myColor.lightOrange, fontSize: 15 }]}>{faker.date.recent().toDateString()}</Text>
                         </View>
                         <Text style={[styles.logText, fontStyle.regular, { color: colors.text }]}>{logItem}</Text>
                     </ScrollView>
@@ -151,11 +151,11 @@ const styles = StyleSheet.create({
     logText: {
         flex: 1,
         marginLeft: 20,
-        marginTop: 20
+        marginTop: 15
     },
     dateText: {
         marginLeft: 10,
-        marginTop: 5
+        marginTop: 3
     },
     innerContainer:{
         marginLeft: 10,
