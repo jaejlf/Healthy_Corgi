@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef, useCallback } from 'react';
-import { SafeAreaView, View, StyleSheet, Text, Image, NativeSyntheticEvent, NativeScrollEvent, Animated, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text, Image, NativeSyntheticEvent, NativeScrollEvent, Animated, TouchableOpacity, ScrollView } from 'react-native';
 import Input from './Input';
 import TopBar from '../../../style/TopBar';
 import { useTheme } from '@react-navigation/native';
@@ -18,11 +18,13 @@ const Diary = () => {
     const [log, updateLog] = useState<string[]>(new Array<string>());
     const logViews = useMemo(() => {
         return log.map((logItem, index) => {
-            return (
+            return (              
                 <View style={styles.logView} key={index}>
+                    <ScrollView>
                     <Text style={[styles.logText, fontStyle.regular, { color: colors.text }]}>{logItem}</Text>
                     <Text style={[fontStyle.regular, styles.dateText, { color: myColor.textGray }]}>{faker.date.recent().toDateString()}</Text>
-                </View>
+                    </ScrollView>
+                </View>   
 
             );
         })
@@ -73,7 +75,7 @@ const Diary = () => {
             <View style={styles.thumbBar}>
                 {thumbnails}
             </View>
-            <View style={styles.logItemView}>{logViews}</View>
+            <ScrollView style={styles.logItemView}>{logViews}</ScrollView>
             <Input updateLog={updateLog} />
         </SafeAreaView>
     );

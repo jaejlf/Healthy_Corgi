@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { SafeAreaView, View, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text, ScrollView } from 'react-native';
 import Input from './Input';
 import TopBar from '../../../style/TopBar';
 import { defaultStyle } from '../../../style/defaultStyle';
@@ -26,7 +26,7 @@ const Todo = () => {
     return (
         <SafeAreaView style={[defaultStyle.safeAreaView, { backgroundColor: colors.background }]}>
             <TopBar />
-            <View style={styles.view}>{todoViews}</View>
+            <ScrollView style={styles.view}>{todoViews}</ScrollView>
             <Input updateTodo={updateTodo} />
         </SafeAreaView>
     )
