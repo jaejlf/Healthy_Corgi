@@ -6,6 +6,7 @@ import { useTheme } from '@react-navigation/native';
 import { myColor } from '../../../style/myColors';
 import { fontStyle } from '../../../style/fontStyle';
 import { FlatList } from "react-native";
+import { defaultStyle } from '../../../style/defaultStyle';
 import faker from 'faker';
 
 const imageWidth = 330;
@@ -18,13 +19,16 @@ const Diary = () => {
     const [log, updateLog] = useState<string[]>(new Array<string>());
     const logViews = useMemo(() => {
         return log.map((logItem, index) => {
-            return (              
+            return (
                 <View style={styles.logView} key={index}>
                     <ScrollView>
-                    <Text style={[styles.logText, fontStyle.regular, { color: colors.text }]}>{logItem}</Text>
-                    <Text style={[fontStyle.regular, styles.dateText, { color: myColor.textGray }]}>{faker.date.recent().toDateString()}</Text>
+                        <View style={styles.innerContainer}>
+                            <Image style={[defaultStyle.subImg]} source={require('../../../../assets/img/paw_orange.png')} />
+                            <Text style={[fontStyle.regular, styles.dateText, { color: myColor.lightOrange }]}>{faker.date.recent().toDateString()}</Text>
+                        </View>
+                        <Text style={[styles.logText, fontStyle.regular, { color: colors.text }]}>{logItem}</Text>
                     </ScrollView>
-                </View>   
+                </View>
 
             );
         })
@@ -49,19 +53,29 @@ const Diary = () => {
     const selectImage = useCallback((index: number) => {
         flatListRef.current?.scrollToIndex({ index });
     }, []);
+
+    //이미지 로컬 path URI
+    const pathArr = [
+        Image.resolveAssetSource(require('../../../../assets/img/corgi1.jpg')).uri,
+        Image.resolveAssetSource(require('../../../../assets/img/corgi2.jpg')).uri,
+        Image.resolveAssetSource(require('../../../../assets/img/corgi3.jpg')).uri,
+        Image.resolveAssetSource(require('../../../../assets/img/corgi4.jpg')).uri,
+        Image.resolveAssetSource(require('../../../../assets/img/corgi5.jpg')).uri
+    ]
+    let i = 0;
     const imageList = useMemo(() => [1, 2, 3, 4, 5].map((val) => {
-        return "https://source.unsplash.com/random/1000x800";
+        return pathArr[i++];
     }), []);
     const circles = useMemo(() => [1, 2, 3, 4, 5].map((val) => {
         return <View key={val} style={styles.circle} />
     }), []);
     const thumbnails = useMemo(() => imageList.map((val, index) => {
-        return <TouchableOpacity onPress={() => { selectImage(index); }} key={index}><Image
-            source={{ uri: val }} style={styles.thumb} /></TouchableOpacity>
+        return <TouchableOpacity onPress={() => { selectImage(index); }} key={index}>
+            <Image source={{ uri: val }} style={styles.thumb} /></TouchableOpacity>
     }), []);
 
     return (
-        <SafeAreaView style={styles.safe}>
+        <SafeAreaView style={[styles.safe, { backgroundColor: colors.background }]}>
             <TopBar />
             <View style={styles.flatview}>
                 <FlatList ref={flatListRef} horizontal data={imageList} onScroll={onScroll} renderItem={({ item }) => {
@@ -126,11 +140,9 @@ const styles = StyleSheet.create({
     },
     logView: {
         width: 330,
-        height: 100,
+        height: 150,
         marginTop: 10,
         flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
         padding: 10,
         borderWidth: 1,
         borderColor: myColor.gray,
@@ -138,13 +150,16 @@ const styles = StyleSheet.create({
     },
     logText: {
         flex: 1,
-        fontSize: 20,
-        marginLeft: 20
+        marginLeft: 20,
+        marginTop: 20
     },
     dateText: {
-        fontSize: 15,
-        marginLeft: 20,
-        marginTop: 10
+        marginLeft: 10,
+        marginTop: 5
+    },
+    innerContainer:{
+        marginLeft: 10,
+        flexDirection: "row"
     }
 })
 export default Diary;
