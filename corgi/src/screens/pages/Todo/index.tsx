@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { SafeAreaView, View, StyleSheet, Text, ScrollView } from 'react-native';
+import React, { useState, useMemo, useCallback } from 'react';
+import { SafeAreaView, View, StyleSheet, Text, ScrollView, Alert } from 'react-native';
 import Input from './Input';
 import TopBar from '../../../style/TopBar';
 import { defaultStyle } from '../../../style/defaultStyle';
@@ -12,13 +12,19 @@ const Todo = () => {
     const theme = useTheme();
     const { colors } = theme;
     const [todo, updateTodo] = useState<string[]>(new Array<string>());
+    const onCheck = useCallback(()=>{
+        Alert.alert('Check pressed!');
+    }, []);
+    const onRemove = useCallback(()=>{
+        Alert.alert('Delete pressed!');
+    }, []);
     const todoViews = useMemo(() => {
         return todo.map((todoItem, index) => {
             return (
                 <View style={styles.todoView} key={index}>
-                    <Icon name="checkcircleo" size={25} color={myColor.orange} />
+                    <Icon name="checkcircleo" size={25} color={myColor.orange} onPress={onCheck} />
                     <Text style={[styles.todoText, fontStyle.regular, { color: colors.text }]}>{todoItem}</Text>
-                    <Icon name="delete" size={25} color="#e33057" />
+                    <Icon name="delete" size={25} color="#e33057" onPress={onRemove}/>
                 </View>
             );
         })
