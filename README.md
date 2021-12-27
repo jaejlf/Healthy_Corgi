@@ -16,3 +16,7 @@
   $ npm start
   $ npm run android
   ```
+<br>
+
+## 🐶 실행 화면
+![헬시코기화면](https://user-images.githubusercontent.com/78673570/147483406-aaeedd4c-503a-4add-8b80-558e966ae1cf.png)
