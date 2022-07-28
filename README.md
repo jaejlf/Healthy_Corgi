@@ -31,14 +31,15 @@
 <br><br>
 
 ## 🕹 설치 및 실행
-- Installation
+### Installation
 
   ```
   $ cd corgi
   $ npm i
   $ npx react-native link
   ```
-- Run
+  
+### Run
 
   ```
   $ npm start
